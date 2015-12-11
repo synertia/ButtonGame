@@ -7,10 +7,21 @@ from random import randrange
 from graphics import *
 
 def main():
+	nwins = 0
+	nlosses = 0
+
 	# Draw the window.
 	win = GraphWin("Three Button Monty",800,600)
 	win.setCoords(0,0,4,2)
 	win.setBackground("lightblue")
+	wint = Text(Point(.5,1.9), "   Wins: %d" % nwins)
+	losst = Text(Point(.5,1.8), "Losses: %d" % nlosses)
+	wint.setSize(20)
+	wint.setTextColor("darkblue")
+	losst.setSize(20)
+	losst.setTextColor("red")
+	wint.draw(win)
+	losst.draw(win)
 	
 	# Draw the buttons.
 	quitButton = GButton(win,Point(3.5,.3),.6,.3,"Quit")
@@ -47,13 +58,14 @@ def main():
 				ltxt.setFill("darkblue")
 				ltxt.setStyle("bold")
 				ltxt.draw(win)
-				
+				nwins += 1
 			
 			else:
 				ltxt = Text(Point(2,1.5),"YOU LOSE")
 				ltxt.setFill("red")
 				ltxt.setStyle("bold")
 				ltxt.draw(win)
+				nlosses += 1
 				
 			button1.deactivate()
 			button2.deactivate()
@@ -71,12 +83,14 @@ def main():
 				ltxt.setFill("darkblue")
 				ltxt.setStyle("bold")
 				ltxt.draw(win)
+				nwins += 1
 			
 			else:
 				ltxt = Text(Point(2,1.5),"YOU LOSE")
 				ltxt.setFill("red")
 				ltxt.setStyle("bold")
 				ltxt.draw(win)
+				nlosses += 1
 				
 			button1.deactivate()
 			button2.deactivate()
@@ -94,12 +108,14 @@ def main():
 				ltxt.setFill("darkblue")
 				ltxt.setStyle("bold")
 				ltxt.draw(win)
+				nwins += 1
 			
 			else:
 				ltxt = Text(Point(2,1.5),"YOU LOSE")
 				ltxt.setFill("red")
 				ltxt.setStyle("bold")
 				ltxt.draw(win)
+				nlosses += 1
 				
 			button1.deactivate()
 			button2.deactivate()
@@ -128,6 +144,8 @@ def main():
 			button2.activate()
 			button3.activate()
 			
+		wint.setText("   Wins: %d" % nwins)
+		losst.setText("Losses: %d" % nlosses)
 		pt = win.getMouse()
 		
 	win.close()
